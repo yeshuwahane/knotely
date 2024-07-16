@@ -38,6 +38,8 @@ class FolderScreen() :Screen{
 
     @Composable
     override fun Content() {
+
+        //folderscreen
         FolderStatic()
 
     }
