@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -33,6 +34,10 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            implementation(libs.koin.android)
+
+            implementation ("io.ktor:ktor-client-okhttp:2.3.10")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -41,6 +46,47 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+
+            implementation(libs.kotlinx.coroutines.core)
+
+            //ktor and serialization
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.multiplatform.settings.no.arg)
+            implementation(libs.ktor.client.logging)
+            implementation(libs.ktor.client.auth)
+            implementation(libs.napier)
+
+            //koin
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose)
+
+            //Kamel
+            implementation("media.kamel:kamel-image:0.9.4")
+
+            //voyager
+            val voyagerVersion = "1.0.0"
+
+            // Multiplatform
+
+            // Navigator
+            implementation("cafe.adriel.voyager:voyager-navigator:$voyagerVersion")
+            // TabNavigator
+            implementation("cafe.adriel.voyager:voyager-tab-navigator:$voyagerVersion")
+
+            // Transitions
+            implementation("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
+
+            // Koin integration
+            implementation("cafe.adriel.voyager:voyager-koin:$voyagerVersion")
+
+            //time
+            implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
+
+
+            //connectivity
+            implementation("com.plusmobileapps:konnectivity:0.1-alpha01")
         }
     }
 }
