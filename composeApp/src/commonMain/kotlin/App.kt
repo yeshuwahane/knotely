@@ -1,13 +1,23 @@
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
+import di.appModule
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.KoinApplication
 import presentation.folders.FolderScreen
 
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
-        Navigator(FolderScreen())
+
+    KoinApplication(
+        application = {
+            modules(appModule())
+        }
+    ){
+        MaterialTheme {
+            Navigator(FolderScreen())
+        }
     }
+
 }
